@@ -252,6 +252,7 @@ function SolarisLib:New(Config)
     local MFrame = MainUI.MainFrame
     MainUI.Parent = Solaris
     MFrame.TopBar.TopFrameTitle.Text = Config.Name
+    MFrame.TopBar.TopFrameTitle.Position = UDim2.new(0,35,0,0)
     MakeDraggable(MFrame.TopBar, MainUI) 
     local oldScript = script
 
