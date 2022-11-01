@@ -3,9 +3,14 @@ ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
 
--- This User Interface Library is brought to you by Solaris Software.
+for i,v in pairs(game.CoreGui:GetChildren()) do
+   if v.Name == "Dosage's Solaris Gui" then
+	v:Destroy()
+   end
+end
+
 local Solaris = Instance.new("ScreenGui")
-Solaris.Name = "dosage's solaris gui"
+Solaris.Name = "Dosage's Solaris Gui"
 Solaris.Parent = game.CoreGui
 Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
