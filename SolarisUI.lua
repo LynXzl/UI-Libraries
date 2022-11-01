@@ -4,7 +4,7 @@ https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
 
 for i,v in pairs(game.CoreGui:GetChildren()) do
-   if v.Name == "Dosage's Solaris Gui" then
+   if v.Name == "Dosage's Solaris Gui" or v.Name == "notiHolder" then
 	v:Destroy()
    end
 end
