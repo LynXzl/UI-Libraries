@@ -844,9 +844,12 @@ function SolarisLib:New(Config)
 				end
 				
 				ToggleMain.MouseButton1Click:Connect(function()
-					return callback(Toggle.Value)
-					Toggle.Value = not Toggle.Value
 					Toggle:Set(Toggle.Value)
+				end)
+				
+				ToggleMain.MouseButton1Click:Connect(function()
+					Toggle.Value = not Toggle.Value
+					return callback(Toggle.Value)
 				end)
 
                 spawn(function()
