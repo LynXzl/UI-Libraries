@@ -832,6 +832,14 @@ function SolarisLib:New(Config)
                     Holding = false
                 end)
 
+                local Buttons = {}
+
+                Buttons:RemoveButton()
+                    Button:Destroy()
+                end
+
+                return Buttons
+
                 spawn(function()
                     while wait() do
                        Button.BackgroundColor3 = Holding and SolarisLib.Themes[SolarisLib.Settings.Theme].ButtonHold or SolarisLib.Themes[SolarisLib.Settings.Theme].Button
