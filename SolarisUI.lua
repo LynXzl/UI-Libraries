@@ -832,20 +832,20 @@ function SolarisLib:New(Config)
                     Holding = false
                 end)
 
-                local Buttons = {}
-
-                Buttons:RemoveButton()
-                    Button:Destroy()
-                end
-
-                return Buttons
-
                 spawn(function()
                     while wait() do
                        Button.BackgroundColor3 = Holding and SolarisLib.Themes[SolarisLib.Settings.Theme].ButtonHold or SolarisLib.Themes[SolarisLib.Settings.Theme].Button
                        Button.ButtonText.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                     end
                 end)
+
+                local Buttons = {}
+
+                function Buttons:RemoveButton()
+                    Button:Destroy()
+                end
+
+                return Buttons
 
             end    
             function ItemHold:Toggle(text,def,flag,callback)
@@ -1309,5 +1309,6 @@ function SolarisLib:New(Config)
         return SectionHold
     end 
     return TabHolder
-end    
-return SolarisLib
+end 
+
+return SolarisLib 
