@@ -409,7 +409,7 @@ function SolarisLib:New(Config)
         SFrame.TopBar.CloseBtn.MouseButton1Click:Connect(function()
             SettingsFrame.Visible = false
         end)
-
+        
         function SaveSettings()
             local content = {}
             for i,v in pairs(SolarisLib.Settings) do
@@ -444,8 +444,9 @@ function SolarisLib:New(Config)
                 Container.Visible = true
                 fs = false
             end    
-
+            
             Tab.MouseButton1Click:Connect(function()
+                SolarisLib.CurrentTab = Container
                 for i,v in next, SFrame.TabHolder:GetChildren() do
                     if v.Name == "Tab" then
                         v.TextTransparency = 0.4
@@ -653,7 +654,6 @@ function SolarisLib:New(Config)
         uitoggled = not uitoggled
         MainUI.Visible = uitoggled
     end)
-
 
     function SearchConstructor()
         function StitchElements()
