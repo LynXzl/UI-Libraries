@@ -1166,7 +1166,11 @@ function SolarisLib:New(Config)
                 function Label:Set(tochange)
                     LabelFrame.Title.Text = tochange
                     LabelFrame.Name = text .. "element"
-                end    
+                end  
+		
+		function Label:RemoveLabel()
+                    LabelFrame:Destroy()
+                end  
 
                 
                 spawn(function()
