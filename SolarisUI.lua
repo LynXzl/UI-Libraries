@@ -904,11 +904,13 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+			pcall(function()
                        SliderMain.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Slider
                        SliderMain.SliderFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].SliderBar
                        SliderMain.SliderFrame.SliderCurrentFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].SliderInc
                        SliderMain.SliderText.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                        SliderMain.SliderVal.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+									end)
                     end
                 end)
 
@@ -983,9 +985,11 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+							pcall(function()
                        DropMain.Btn.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Dropdown
                        DropMain.Btn.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                        DropMain.Btn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+									end)
                     end
                 end)
 
@@ -1199,11 +1203,11 @@ function SolarisLib:New(Config)
                 TextboxFrame.Parent = Section
                 TextboxFrame.Title.Text = text
                 TextboxFrame.Name = text .. "element"
-
-                TextboxFrame.Box.Changed:Connect(function()
-                    TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+		
+                TextboxFrame:WaitForChild("Box").Changed:Connect(function()
+                    TextboxFrame:WaitForChild("Box").Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
                 end)
-                TextboxFrame.Box.PlaceholderText = "                  "
+                TextboxFrame:WaitForChild("Box").PlaceholderText = "                  "
 
                 TextboxFrame.InputBegan:Connect(function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
