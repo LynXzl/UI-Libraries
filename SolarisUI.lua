@@ -1177,8 +1177,10 @@ function SolarisLib:New(Config)
                 
                 spawn(function()
                     while wait() do
-                       LabelFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Label
-                       LabelFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			pcall(function()
+			       LabelFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Label
+			       LabelFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			end)
                     end
                 end)
 
