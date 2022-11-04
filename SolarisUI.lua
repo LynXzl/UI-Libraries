@@ -793,8 +793,10 @@ function SolarisLib:New(Config)
 
             spawn(function()
                 while wait() do
-                    Section.SectionTitle.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
-                    Section.Size = UDim2.new(0.9,0,0,Section.UIListLayout.AbsoluteContentSize.Y)
+			pcall(function()
+			    Section.SectionTitle.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			    Section.Size = UDim2.new(0.9,0,0,Section.UIListLayout.AbsoluteContentSize.Y)
+			end)
                 end
             end)
             local ItemHold = {}
