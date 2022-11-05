@@ -764,6 +764,7 @@ function SolarisLib:New(Config)
 
         
         Tab.MouseButton1Click:Connect(function()
+	    SolarisLib.CurrentTab = Container  
             for i,v in next, MFrame.TabMenu.Menu.Holder:GetChildren() do
                 if v:IsA("TextButton") then
                     TweenService:Create(v,TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play() 
