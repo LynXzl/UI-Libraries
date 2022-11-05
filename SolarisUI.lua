@@ -710,7 +710,7 @@ function SolarisLib:New(Config)
     end)
 
     function SolarisLib:LoadCfg(cfg)
-        local success, content = pcall(httpService.JSONDecode, httpService, readfile(cfg))
+        local success, content = pcall(game:GetService('HttpService').JSONDecode, game:GetService('HttpService'), readfile(cfg))
 	if not success then return false, 'decode error' end
         table.foreach(content, function(a,b)
             if SolarisLib.Flags[a] then
