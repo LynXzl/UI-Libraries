@@ -413,7 +413,7 @@ function SolarisLib:New(Config)
         function SaveSettings()
             local content = {}
             for i,v in pairs(SolarisLib.Settings) do
-		if i ~= "" or v ~= "" then
+		if i ~= "" and v ~= "" then
                 	content[i] = v
 		end
             end
