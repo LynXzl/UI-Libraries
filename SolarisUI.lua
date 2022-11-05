@@ -37,8 +37,6 @@ local function CheckKey(tab, key)
 	end
 end
 
-
-
 local NotificationFrame = game:GetObjects("rbxassetid://6924028278")[1]
 NotificationFrame.ZIndex = 4
 NotificationFrame.Parent = NotificationHolder
@@ -216,9 +214,9 @@ function Ripple(Object)
 		Circle.ImageTransparency = 0.8
 		Circle.Position = UDim2.new(0, Mouse.X - Circle.AbsolutePosition.X, 0, Mouse.Y - Circle.AbsolutePosition.Y)
 		local Size = Object.AbsoluteSize.X
-		TweenService:Create(Circle, TweenInfo.new(0.5), {Position = UDim2.fromScale(math.clamp(Mouse.X - Object.AbsolutePosition.X, 0, Object.AbsoluteSize.X)/Object.AbsoluteSize.X,Object,math.clamp(Mouse.Y - Object.AbsolutePosition.Y, 0, Object.AbsoluteSize.Y)/Object.AbsoluteSize.Y) - UDim2.fromOffset(Size/2,Size/2), ImageTransparency = 1, Size = UDim2.fromOffset(Size,Size)}):Play()
+		TweenService:Create(Circle, TweenInfo.new(0.2), {Position = UDim2.fromScale(math.clamp(Mouse.X - Object.AbsolutePosition.X, 0, Object.AbsoluteSize.X)/Object.AbsoluteSize.X,Object,math.clamp(Mouse.Y - Object.AbsolutePosition.Y, 0, Object.AbsoluteSize.Y)/Object.AbsoluteSize.Y) - UDim2.fromOffset(Size/2,Size/2), ImageTransparency = 1, Size = UDim2.fromOffset(Size,Size)}):Play()
 		spawn(function()
-			wait(0.5)
+			wait(0.2)
 			Circle:Destroy()
 		end)
 	end)
@@ -383,6 +381,7 @@ function SolarisLib:New(Config)
         
         spawn(function()
             while wait() do
+                pcall(function()
                 MusicFrame.Frame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                 MusicFrame.Frame.TopBar.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
                 MusicFrame.Frame.TopBar.CloseBtn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -391,6 +390,7 @@ function SolarisLib:New(Config)
                 MusicFrame.Frame.Progress.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Slider
                 MusicFrame.Frame.Progress.ProgressFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].SliderInc
                 MusicFrame.Frame.AddSong.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Textbox
+                end)
             end
         end)
     end  
@@ -423,12 +423,13 @@ function SolarisLib:New(Config)
         
         spawn(function()
             while wait() do
+                pcall(function()
                 SFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                 SFrame.TopBar.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
                 SFrame.TopBar.CloseBtn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                 SFrame.TopBar.TopFrameTitle.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                 SFrame.TabHolder.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
-
+                end)
             end
         end)
 
@@ -490,9 +491,11 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+                        pcall(function()
                         Toggle.ToggleFrame.ToggleToggled.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                         Toggle.ToggleFrame.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
                         Toggle.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                        end)
                     end
                 end)
             end
@@ -542,9 +545,11 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+                        pcall(function()
                         Bind.Desc.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                         Bind.BText.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                         Bind.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                        end)
                     end
                 end)
             
@@ -593,7 +598,9 @@ function SolarisLib:New(Config)
 
                         spawn(function()
                             while wait() do
-                               Option.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor       
+                                pcall(function()
+                               Option.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor   
+                                end)    
                             end
                         end)
                     end   
@@ -601,8 +608,10 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+                        pcall(function()
                         Dropdown.Main.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
                         Dropdown.Main.Holder.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
+                        end)
                     end
                 end)
                 AddOptions(list)
@@ -695,6 +704,7 @@ function SolarisLib:New(Config)
 
     spawn(function()
         while wait() do
+            pcall(function()
             MFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
             MFrame.TopBar.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
             MFrame.TopBar.ButtonHolder.CloseBtn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -708,6 +718,7 @@ function SolarisLib:New(Config)
             MFrame.TopBar.ButtonHolder.SearchBtn.TextBox.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
             MFrame.TopBar.ButtonHolder.SearchBtn.TextBox.PlaceholderColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
             MFrame.TopBar.ButtonHolder.MenuBtn.MenuFrame.Frame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
+            end)
         end
     end)
 
@@ -717,8 +728,6 @@ function SolarisLib:New(Config)
         table.foreach(content, function(a,b)
             if SolarisLib.Flags[a] then
                 spawn(function() SolarisLib.Flags[a]:Set(b) end)
-            else
-                warn("cfg loader - could not find", a ,b )
             end
         end)
     end
@@ -814,8 +823,6 @@ function SolarisLib:New(Config)
                 
                 Button.MouseButton1Click:Connect(function()
                     pcall(task.spawn, callback)
-                end)
-		Button.MouseButton1Click:Connect(function()
                     Ripple(Button)
                 end)
                 Button.MouseEnter:Connect(function()
@@ -850,16 +857,16 @@ function SolarisLib:New(Config)
                 ToggleMain.Name = text .. "element"
 
                function Toggle:Set(value)
-		Toggle.Value = value
+		            Toggle.Value = value
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
-		return callback(Toggle.Value)
-	        end
-		function Toggle:GhostSet(value)
-		Toggle.Value = value
+		            return callback(Toggle.Value)
+	            end
+		        function Toggle:GhostSet(value)
+		            Toggle.Value = value
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
-	        end
+	            end
 				
 				ToggleMain.MouseButton1Click:Connect(function()
 					Toggle.Value = not Toggle.Value
@@ -877,7 +884,7 @@ function SolarisLib:New(Config)
                     end
                 end)
 
-		Toggle:GhostSet(def)
+		        Toggle:GhostSet(def)
                 SolarisLib.Flags[flag] = Toggle
                 return Toggle
             end    
@@ -1043,8 +1050,10 @@ function SolarisLib:New(Config)
 
                         spawn(function()
                             while wait() do
+                                pcall(function()
                                Option.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].DropdownItem
                                DropMain.Btn.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                                end)
                             end
                         end)
                     end   
@@ -1076,9 +1085,11 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+                        pcall(function()
                        DropMain.Btn.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Dropdown
                        DropMain.Btn.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
                        DropMain.Btn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                        end)
                     end
                 end)
 
@@ -1172,8 +1183,10 @@ function SolarisLib:New(Config)
 
                 spawn(function()
                     while wait() do
+                        pcall(function()
                        ColorPreset.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Colorpicker
                        ColorPreset.Btn.Colorpicker.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                        end)
                     end
                 end)
 
@@ -1328,5 +1341,4 @@ function SolarisLib:New(Config)
     end 
     return TabHolder
 end 
-
 return SolarisLib 
