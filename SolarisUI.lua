@@ -814,6 +814,8 @@ function SolarisLib:New(Config)
                 
                 Button.MouseButton1Click:Connect(function()
                     pcall(task.spawn, callback)
+                end)
+		Button.MouseButton1Click:Connect(function()
                     Ripple(Button)
                 end)
                 Button.MouseEnter:Connect(function()
@@ -1210,8 +1212,8 @@ function SolarisLib:New(Config)
                 TextboxFrame.Title.Text = text
                 TextboxFrame.Name = text .. "element"
 		
-                TextboxFrame:WaitForChild("Box").Changed:Connect(function()
-                    TextboxFrame:WaitForChild("Box").Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+                TextboxFrame.Box.Changed:Connect(function()
+                    TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
                 end)
                 TextboxFrame:WaitForChild("Box").PlaceholderText = "                  "
 
@@ -1238,10 +1240,12 @@ function SolarisLib:New(Config)
                 
                 spawn(function()
                     while wait() do
-                       TextboxFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Textbox
-                       TextboxFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
-                       TextboxFrame.Box.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextboxFrame
-                       TextboxFrame.Box.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			pcall(function()
+			       TextboxFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Textbox
+			       TextboxFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			       TextboxFrame.Box.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextboxFrame
+			       TextboxFrame.Box.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+			end)
                     end
                 end)
                 return Textbox
