@@ -413,7 +413,9 @@ function SolarisLib:New(Config)
         function SaveSettings()
             local content = {}
             for i,v in pairs(SolarisLib.Settings) do
-                content[i] = v
+		if i ~= "" or v ~= "" then
+                	content[i] = v
+		end
             end
             writefile(Config.FolderToSave .. "/settings.txt", tostring(http:JSONEncode(content)))
         end    
