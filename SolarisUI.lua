@@ -845,19 +845,21 @@ function SolarisLib:New(Config)
                 ToggleMain.ToggleText.Text = text
                 ToggleMain.Name = text .. "element"
 
-                function Toggle:Set(value)
-					Toggle.Value = value
+               function Toggle:Set(value)
+		Toggle.Value = value
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
-				end
-				
-				ToggleMain.MouseButton1Click:Connect(function()
-					Toggle:Set(Toggle.Value)
-				end)
+		return callback(Toggle.Value)
+	        end
+		function Toggle:GhostSet(value)
+		Toggle.Value = value
+                    TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
+                    TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
+	        end
 				
 				ToggleMain.MouseButton1Click:Connect(function()
 					Toggle.Value = not Toggle.Value
-					return callback(Toggle.Value)
+					Toggle:Set(Toggle.Value)           
 				end)
 
                 spawn(function()
@@ -871,7 +873,7 @@ function SolarisLib:New(Config)
                     end
                 end)
 
-		Toggle:Set(def)
+		Toggle:GhostSet(def)
                 SolarisLib.Flags[flag] = Toggle
                 return Toggle
             end    
