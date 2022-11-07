@@ -699,6 +699,7 @@ function SolarisLib:New(Config)
 		if (Input.KeyCode.Name == SolarisLib.Settings.CloseBind or Input.UserInputType.Name == SolarisLib.Settings.CloseBind) and not closebindbinding then
             uitoggled = not uitoggled
             MainUI.Visible = uitoggled
+	NotificationHolder.Enabled = not NotificationHolder.Enabled
 		end
 	end)
 
