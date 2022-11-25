@@ -1200,8 +1200,10 @@ function SolarisLib:New(Config)
                 LabelFrame.Name = text .. "element"
 
                 function Label:Set(tochange)
+		pcall(function()
                     LabelFrame.Title.Text = tochange
                     LabelFrame.Name = text .. "element"
+		end)
                 end  
 		
 		function Label:RemoveLabel()
