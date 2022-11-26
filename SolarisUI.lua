@@ -4,13 +4,13 @@ https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
 
 for i,v in pairs(game.CoreGui:GetChildren()) do
-   if v.Name == "Dosage's Solaris Gui" or v.Name == "notiHolder" then
+   if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
 	v:Destroy()
    end
 end
 
 local Solaris = Instance.new("ScreenGui")
-Solaris.Name = "Dosage's Solaris Gui"
+Solaris.Name = "Solaris Gui"
 Solaris.Parent = game.CoreGui
 Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -68,93 +68,27 @@ local SolarisLib = {
             Label = Color3.fromRGB(30,30,30),
             Bind = Color3.fromRGB(30,30,30)
         },
-        Discord = {
-            MainFrame = Color3.fromRGB(54,57,63),
-            TopBar = Color3.fromRGB(47,49,54),
-            TextColor =  Color3.fromRGB(255,255,255),
-            Menu = Color3.fromRGB(47,49,54),
-            TabToggled = Color3.fromRGB(54,57,63),
-            Button = Color3.fromRGB(88,101,242),
-            ButtonHold = Color3.fromRGB(71,82,196),
-            Toggle = Color3.fromRGB(47,49,54),
-            ToggleFrame = Color3.fromRGB(67,69,74),
-            ToggleToggled = Color3.fromRGB(22, 168, 76),
-            Slider = Color3.fromRGB(47,49,54),
-            SliderBar = Color3.fromRGB(42,44,49),
-            SliderInc = Color3.fromRGB(62,64,69),
-            Dropdown = Color3.fromRGB(47,49,54),
-            DropdownItem = Color3.fromRGB(47,49,54),
-            Textbox = Color3.fromRGB(47,49,54),
-            TextboxFrame = Color3.fromRGB(42,44,49),
-            Colorpicker = Color3.fromRGB(47,49,54),
-            Label = Color3.fromRGB(47,49,54),
-            Bind = Color3.fromRGB(47,49,54)
-        },
-        Blue = {
-            MainFrame = Color3.fromRGB(35, 35, 50),
-            TopBar = Color3.fromRGB(40, 40, 55),
-            TextColor =  Color3.fromRGB(255,255,255),
-            Menu = Color3.fromRGB(47, 47, 62),
-            TabToggled = Color3.fromRGB(53,53,68),
-            Button = Color3.fromRGB(40,40,55),
-            ButtonHold = Color3.fromRGB(41,41,56),
-            Toggle = Color3.fromRGB(40,40,55),
-            ToggleFrame = Color3.fromRGB(65,65,80),
-            ToggleToggled = Color3.fromRGB(64, 64, 120),
-            Slider = Color3.fromRGB(40,40,55),
-            SliderBar = Color3.fromRGB(35, 35, 50),
-            SliderInc = Color3.fromRGB(70, 70, 85),
-            Dropdown = Color3.fromRGB(40,40,55),
-            DropdownItem = Color3.fromRGB(40,40,55),
-            Textbox = Color3.fromRGB(40,40,55),
-            TextboxFrame = Color3.fromRGB(35, 35, 50),
-            Colorpicker = Color3.fromRGB(40,40,55),
-            Label = Color3.fromRGB(40,40,55),
-            Bind = Color3.fromRGB(40,40,55)
-        },
-        Red = {
-            MainFrame = Color3.fromRGB(50, 35, 35),
-            TopBar = Color3.fromRGB(55, 40, 40),
-            TextColor =  Color3.fromRGB(255,255,255),
-            Menu = Color3.fromRGB(62, 47, 47),
-            TabToggled = Color3.fromRGB(68,53,53),
-            Button = Color3.fromRGB(55,40,40),
-            ButtonHold = Color3.fromRGB(56,41,41),
-            Toggle = Color3.fromRGB(55,40,40),
-            ToggleFrame = Color3.fromRGB(80,65,65),
-            ToggleToggled = Color3.fromRGB(120, 64, 64),
-            Slider = Color3.fromRGB(55,40,40),
-            SliderBar = Color3.fromRGB(50, 35, 35),
-            SliderInc = Color3.fromRGB(85, 70, 70),
-            Dropdown = Color3.fromRGB(55,40,40),
-            DropdownItem = Color3.fromRGB(55,40,40),
-            Textbox = Color3.fromRGB(55,40,40),
-            TextboxFrame = Color3.fromRGB(50, 35, 35),
-            Colorpicker = Color3.fromRGB(55,40,40),
-            Label = Color3.fromRGB(55,40,40),
-            Bind = Color3.fromRGB(55,40,40)
-        },
-        Green = {
-            MainFrame = Color3.fromRGB(35, 50, 35),
-            TopBar = Color3.fromRGB(40, 55, 40),
-            TextColor =  Color3.fromRGB(255,255,255),
-            Menu = Color3.fromRGB(47, 62, 47),
-            TabToggled = Color3.fromRGB(53,68,53),
-            Button = Color3.fromRGB(40,55,40),
-            ButtonHold = Color3.fromRGB(41,56,41),
-            Toggle = Color3.fromRGB(40,55,40),
-            ToggleFrame = Color3.fromRGB(65,80,65),
-            ToggleToggled = Color3.fromRGB(64, 120, 64),
-            Slider = Color3.fromRGB(40,55,40),
-            SliderBar = Color3.fromRGB(35, 50, 35),
-            SliderInc = Color3.fromRGB(70, 85, 70),
-            Dropdown = Color3.fromRGB(40,55,40),
-            DropdownItem = Color3.fromRGB(40,55,40),
-            Textbox = Color3.fromRGB(40,55,40),
-            TextboxFrame = Color3.fromRGB(35, 50, 35),
-            Colorpicker = Color3.fromRGB(40,55,40),
-            Label = Color3.fromRGB(40,55,40),
-            Bind = Color3.fromRGB(40,55,40)
+        Halloween = {
+            MainFrame = Color3.fromRGB(20, 20, 20),
+            TopBar = Color3.fromRGB(25, 25, 25),
+            TextColor =  Color3.fromRGB(250,250,250),
+            Menu = Color3.fromRGB(32, 32, 32),
+            TabToggled = Color3.fromRGB(38,38,38),
+            Button = Color3.fromRGB(25,25,25),
+            ButtonHold = Color3.fromRGB(26,26,26),
+            Toggle = Color3.fromRGB(25,25,25),
+            ToggleFrame = Color3.fromRGB(50,50,50),
+            ToggleToggled = Color3.fromRGB(255, 140, 0),
+            Slider = Color3.fromRGB(25,25,25),
+            SliderBar = Color3.fromRGB(20, 20, 20),
+            SliderInc = Color3.fromRGB(55, 55, 55),
+            Dropdown = Color3.fromRGB(25,25,25),
+            DropdownItem = Color3.fromRGB(25,25,25),
+            Textbox = Color3.fromRGB(25,25,25),
+            TextboxFrame = Color3.fromRGB(20, 20, 20),
+            Colorpicker = Color3.fromRGB(25,25,25),
+            Label = Color3.fromRGB(25,25,25),
+            Bind = Color3.fromRGB(25,25,25)
         }
     },
     Settings = {
@@ -230,7 +164,7 @@ function SolarisLib:New(Config)
     if not isfolder(Config.FolderToSave) then 
         makefolder(Config.FolderToSave)
     end
-    
+    Config.Name
     if not isfolder(Config.FolderToSave .. "/configs") then 
         makefolder(Config.FolderToSave .. "/configs")
     end
@@ -255,6 +189,7 @@ function SolarisLib:New(Config)
     local MFrame = MainUI.MainFrame
     MainUI.Parent = Solaris
     MFrame.TopBar.TopFrameTitle.Text = Config.Name
+
     MFrame.TopBar.TopFrameTitle.Position = UDim2.new(0,35,0,0)
     MakeDraggable(MFrame.TopBar, MainUI) 
     local oldScript = script
@@ -620,11 +555,11 @@ function SolarisLib:New(Config)
         end   
         
         local general = Settings:Tab("General")
-        general:ToggleSetting("Show Music On Launch", "Shows the music menu when you load Snow Hub", true, "ShowMusicOnLaunch")
-        general:BindSetting("Close Bind", "Hides/Shows the main window when pressed.", Enum.KeyCode.RightControl, "CloseBind")
+        general:ToggleSetting("Show Music On Launch", "Shows the music menu when you load UI", true, "ShowMusicOnLaunch")
+        general:BindSetting("Close Bind", "Hides/Shows the main window when pressed", Enum.KeyCode.RightAlt, "CloseBind")
         
         local appearance = Settings:Tab("Appearance")
-        appearance:Dropdown("Theme", "The look of the user interface", {"Default", "Discord", "Red", "Green", "Blue"}, "Default", "Theme")
+        appearance:Dropdown("Theme", "The look of the UI", {"Default", "Halloween"}, "Default", "Theme")
 
     end 
     MusicConstructor()
