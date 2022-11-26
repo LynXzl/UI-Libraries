@@ -164,7 +164,6 @@ function SolarisLib:New(Config)
     if not isfolder(Config.FolderToSave) then 
         makefolder(Config.FolderToSave)
     end
-    Config.Name
     if not isfolder(Config.FolderToSave .. "/configs") then 
         makefolder(Config.FolderToSave .. "/configs")
     end
