@@ -1229,7 +1229,9 @@ function SolarisLib:New(Config)
                 TextboxFrame.Name = text .. "element"
 		
                 TextboxFrame.Box.Changed:Connect(function()
-                    TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+			pcall(function()
+                    		TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+			end)
                 end)
                 TextboxFrame:WaitForChild("Box").PlaceholderText = "                  "
 
