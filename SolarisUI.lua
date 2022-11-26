@@ -94,8 +94,8 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
      Settings = {
          ShowFriendsOnLaunch = true,
          ShowMusicOnLaunch = false,
-         CloseBind = "RightControl",
          Theme = "Default", --Change Theme When ///
+         CloseBind = "RightControl",
      },
      Flags = {},
      CurrentTab
@@ -175,8 +175,10 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          end
          writefile(Config.FolderToSave .. "/settings.txt", tostring(http:JSONEncode(content)))
      end    
-     --Remove 179 when ///
-     SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
+     --Remove 180 when ///
+     pcall(function()
+        SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
+     end)
  
      local closebindbinding = false
      local fs = false
