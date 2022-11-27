@@ -1188,9 +1188,11 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  end)
  
                  UserInputService.InputBegan:Connect(function(input)
+                        pcall(function()
                      if input.KeyCode == Enum.KeyCode.Escape and TextboxFrame.Box:IsFocused() then
                          TextboxFrame.Box:ReleaseFocus()
                      end
+                        end)
                  end)
                  
                  spawn(function()
