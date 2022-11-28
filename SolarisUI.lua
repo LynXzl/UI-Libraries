@@ -11,6 +11,13 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  
  local Solaris = Instance.new("ScreenGui")
  Solaris.Name = "Solaris Gui"
+ local synapse = syn
+ if synapse ~= nil then
+    syn.protect_gui(Solaris)
+    warn("Solaris: GUI PROTECTED")
+    else
+    warn("Solaris: Cant protect gui :(")
+ end
  Solaris.Parent = game.CoreGui
  Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
  
