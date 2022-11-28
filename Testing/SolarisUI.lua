@@ -17,6 +17,9 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  local synapse = syn
  if synapse ~= nil then
     syn.protect_gui(Solaris)
+    warn("Solaris: GUI PROTECTED")
+    else
+    warn("Solaris: Cant protect gui :(")
  end
 
  local NotificationHolder = Instance.new("ScreenGui")
