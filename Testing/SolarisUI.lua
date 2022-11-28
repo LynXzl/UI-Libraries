@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v1")
+warn("Solaris: Loading v2")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -11,9 +11,6 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  
  local Solaris = Instance.new("ScreenGui")
  Solaris.Name = "Solaris Gui"
- Solaris.Parent = game.CoreGui
- Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
  local synapse = syn
  if synapse ~= nil then
     syn.protect_gui(Solaris)
@@ -21,6 +18,8 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
     else
     warn("Solaris: Cant protect gui :(")
  end
+ Solaris.Parent = game.CoreGui
+ Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
  local NotificationHolder = Instance.new("ScreenGui")
  NotificationHolder.Name = "notiHolder"
