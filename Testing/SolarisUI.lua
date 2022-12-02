@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v3")
+warn("Solaris: Loading v4")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -68,6 +68,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Toggle = Color3.fromRGB(30,30,30),
              ToggleFrame = Color3.fromRGB(55,55,55),
              ToggleToggled = Color3.fromRGB(22, 168, 76),
+             ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(30,30,30),
              SliderBar = Color3.fromRGB(25, 25, 25),
              SliderInc = Color3.fromRGB(60, 60, 60),
@@ -90,6 +91,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Toggle = Color3.fromRGB(25,25,25),
              ToggleFrame = Color3.fromRGB(50,50,50),
              ToggleToggled = Color3.fromRGB(255, 140, 0),
+             ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(25,25,25),
              SliderBar = Color3.fromRGB(20, 20, 20),
              SliderInc = Color3.fromRGB(55, 55, 55),
@@ -111,7 +113,8 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              ButtonHold = Color3.fromRGB(36,36,36),
              Toggle = Color3.fromRGB(35,35,35),
              ToggleFrame = Color3.fromRGB(60,60,60),
-             ToggleToggled = Color3.fromRGB(188, 24, 23),
+             ToggleToggled = Color3.fromRGB(212, 24, 23),
+             ToggleToggledIcon = Color3.fromRGB(232, 44, 43),
              Slider = Color3.fromRGB(35,35,35),
              SliderBar = Color3.fromRGB(30, 30, 30),
              SliderInc = Color3.fromRGB(65, 65, 65),
@@ -441,7 +444,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  Toggle.Parent = Container
                  Toggle.Title.Text = title
                  Toggle.Desc.Text = desc
- 
+                 Toggle.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                  local function Tween(val)
                      TweenService:Create(Toggle.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= val and 0 or 1}):Play()
                      TweenService:Create(Toggle.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= val and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
@@ -463,6 +466,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  spawn(function()
                      while wait() do
                          pcall(function()
+                         Toggle.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                          Toggle.ToggleFrame.ToggleToggled.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                          Toggle.ToggleFrame.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
                          Toggle.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -827,7 +831,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  ToggleMain.Parent = Section
                  ToggleMain.ToggleText.Text = text
                  ToggleMain.Name = text .. "element"
- 
+                 ToggleMain.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                 function Toggle:Set(value)
                      Toggle.Value = value
                      TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
@@ -848,6 +852,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  spawn(function()
                      while wait() do
              pcall(function()
+                 ToggleMain.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                  ToggleMain.ToggleFrame.ToggleToggled.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
                  ToggleMain.ToggleFrame.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
                  ToggleMain.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
