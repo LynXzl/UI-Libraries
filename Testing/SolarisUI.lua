@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v6")
+warn("Solaris: Loading v7")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -834,8 +834,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  ToggleMain.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                 function Toggle:Set(value)
                      Toggle.Value = value
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1,Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
                      return callback(Toggle.Value)
                  end
                  function Toggle:GhostSet(value)
