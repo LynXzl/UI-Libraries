@@ -2,26 +2,30 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v2")
+warn("Solaris: Loading v3")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
     end
  end
- 
- local Solaris = Instance.new("ScreenGui")
- Solaris.Name = "Solaris Gui"
  local synapse = syn
+ local Solaris = Instance.new("ScreenGui")
+
+ local StarterTheme = "Default"
  if synapse ~= nil then
     syn.protect_gui(Solaris)
     warn("Solaris: GUI PROTECTED")
     else
     warn("Solaris: Cant protect gui :(")
  end
+ Solaris.Name = "Solaris Gui"
  Solaris.Parent = game.CoreGui
  Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
  local NotificationHolder = Instance.new("ScreenGui")
+ if synapse ~= nil then
+    syn.protect_gui(NotificationHolder)
+ end
  NotificationHolder.Name = "notiHolder"
  NotificationHolder.Parent = game.CoreGui
  NotificationHolder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -96,12 +100,34 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Colorpicker = Color3.fromRGB(25,25,25),
              Label = Color3.fromRGB(25,25,25),
              Bind = Color3.fromRGB(25,25,25)
-         }
+         },
+         Christmas = {
+            MainFrame = Color3.fromRGB(30, 30, 30),
+             TopBar = Color3.fromRGB(35, 35, 35),
+             TextColor =  Color3.fromRGB(255,255,255),
+             Menu = Color3.fromRGB(42, 42, 42),
+             TabToggled = Color3.fromRGB(48,48,48),
+             Button = Color3.fromRGB(35,35,35),
+             ButtonHold = Color3.fromRGB(36,36,36),
+             Toggle = Color3.fromRGB(35,35,35),
+             ToggleFrame = Color3.fromRGB(60,60,60),
+             ToggleToggled = Color3.fromRGB(188, 24, 23),
+             Slider = Color3.fromRGB(35,35,35),
+             SliderBar = Color3.fromRGB(30, 30, 30),
+             SliderInc = Color3.fromRGB(65, 65, 65),
+             Dropdown = Color3.fromRGB(35,35,35),
+             DropdownItem = Color3.fromRGB(35,35,35),
+             Textbox = Color3.fromRGB(35,35,35),
+             TextboxFrame = Color3.fromRGB(30, 30, 30),
+             Colorpicker = Color3.fromRGB(35,35,35),
+             Label = Color3.fromRGB(35,35,35),
+             Bind = Color3.fromRGB(35,35,35)
+        }
      },
      Settings = {
          ShowFriendsOnLaunch = true,
          ShowMusicOnLaunch = false,
-         Theme = "Default", --Change Theme When ///
+         Theme = StarterTheme, --Change Theme When ///
          CloseBind = "RightControl",
      },
      Flags = {},
@@ -182,10 +208,11 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          end
          writefile(Config.FolderToSave .. "/settings.txt", tostring(http:JSONEncode(content)))
      end    
-     --Remove 180 when ///
-     pcall(function()
-        SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
-     end)
+     if StarterTheme == "Default" then
+        pcall(function()
+            SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
+        end)
+    end
  
      local closebindbinding = false
      local fs = false
@@ -568,7 +595,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          general:BindSetting("Close Bind", "Hides/Shows the main window when pressed", Enum.KeyCode.RightAlt, "CloseBind")
          
          local appearance = Settings:Tab("Appearance")
-         appearance:Dropdown("Theme", "The look of the UI", {"Default", "Halloween"}, "Default", "Theme") --Change Theme When ///
+         appearance:Dropdown("Theme", "The look of the UI", {"Default", "Halloween","Christmas"}, StarterTheme, "Theme")
  
      end 
      MusicConstructor()
@@ -643,7 +670,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          if (Input.KeyCode.Name == SolarisLib.Settings.CloseBind or Input.UserInputType.Name == SolarisLib.Settings.CloseBind) and not closebindbinding then
              uitoggled = not uitoggled
              MainUI.Visible = uitoggled
-     NotificationHolder.Enabled = not NotificationHolder.Enabled
+             NotificationHolder.Enabled = not NotificationHolder.Enabled
          end
      end)
  
@@ -1144,10 +1171,10 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  LabelFrame.Name = text .. "element"
  
                  function Label:Set(tochange)
-         pcall(function()
+                    pcall(function()
                      LabelFrame.Title.Text = tochange
                      LabelFrame.Name = text .. "element"
-         end)
+                    end)
                  end  
          
          function Label:RemoveLabel()
@@ -1157,10 +1184,10 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  
                  spawn(function()
                      while wait() do
-             pcall(function()
+                    pcall(function()
                     LabelFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Label
                     LabelFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
-             end)
+                    end)
                      end
                  end)
  
