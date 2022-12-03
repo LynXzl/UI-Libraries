@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v10")
+warn("Solaris: Loading v11")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -95,7 +95,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(25,25,25),
              SliderBar = Color3.fromRGB(20, 20, 20),
-             SliderInc = Color3.fromRGB(55, 55, 55),
+             SliderInc = Color3.fromRGB(255, 140, 0),
              Dropdown = Color3.fromRGB(25,25,25),
              DropdownItem = Color3.fromRGB(25,25,25),
              Textbox = Color3.fromRGB(25,25,25),
@@ -1208,7 +1208,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          
                  TextboxFrame.Box.Changed:Connect(function()
              pcall(function()
-                             TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+                TweenService:Create(TextboxFrame.Box,TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)}):Play() 
              end)
                  end)
                  TextboxFrame:WaitForChild("Box").PlaceholderText = "                  "
