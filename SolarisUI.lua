@@ -2,26 +2,33 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-
+warn("Solaris: Loading v16")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
     end
  end
- 
- local Solaris = Instance.new("ScreenGui")
- Solaris.Name = "Solaris Gui"
  local synapse = syn
+ local Solaris = Instance.new("ScreenGui")
+ 
+ local Emoji = ""
+ local StarterTheme = "Default"
+
  if synapse ~= nil then
     syn.protect_gui(Solaris)
     warn("Solaris: GUI PROTECTED")
     else
     warn("Solaris: Cant protect gui :(")
  end
+ Solaris.Name = "Solaris Gui"
  Solaris.Parent = game.CoreGui
  Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
- 
+
  local NotificationHolder = Instance.new("ScreenGui")
+ if synapse ~= nil then
+    syn.protect_gui(NotificationHolder)
+ end
+
  NotificationHolder.Name = "notiHolder"
  NotificationHolder.Parent = game.CoreGui
  NotificationHolder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -62,8 +69,9 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Button = Color3.fromRGB(30,30,30),
              ButtonHold = Color3.fromRGB(31,31,31),
              Toggle = Color3.fromRGB(30,30,30),
-             ToggleFrame = Color3.fromRGB(55,55,55),
+             ToggleFrame = Color3.fromRGB(42,42,42),
              ToggleToggled = Color3.fromRGB(22, 168, 76),
+             ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(30,30,30),
              SliderBar = Color3.fromRGB(25, 25, 25),
              SliderInc = Color3.fromRGB(60, 60, 60),
@@ -84,11 +92,12 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Button = Color3.fromRGB(25,25,25),
              ButtonHold = Color3.fromRGB(26,26,26),
              Toggle = Color3.fromRGB(25,25,25),
-             ToggleFrame = Color3.fromRGB(50,50,50),
+             ToggleFrame = Color3.fromRGB(38,38,38),
              ToggleToggled = Color3.fromRGB(255, 140, 0),
+             ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(25,25,25),
              SliderBar = Color3.fromRGB(20, 20, 20),
-             SliderInc = Color3.fromRGB(55, 55, 55),
+             SliderInc = Color3.fromRGB(255, 140, 0),
              Dropdown = Color3.fromRGB(25,25,25),
              DropdownItem = Color3.fromRGB(25,25,25),
              Textbox = Color3.fromRGB(25,25,25),
@@ -96,12 +105,35 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              Colorpicker = Color3.fromRGB(25,25,25),
              Label = Color3.fromRGB(25,25,25),
              Bind = Color3.fromRGB(25,25,25)
-         }
+         },
+         Christmas = {
+            MainFrame = Color3.fromRGB(23, 23, 23),
+             TopBar = Color3.fromRGB(27, 27, 27),
+             TextColor =  Color3.fromRGB(255,255,255),
+             Menu = Color3.fromRGB(35, 35, 35),
+             TabToggled = Color3.fromRGB(40,40,40),
+             Button = Color3.fromRGB(27,27,27),
+             ButtonHold = Color3.fromRGB(27,27,27),
+             Toggle = Color3.fromRGB(27,27,27),
+             ToggleFrame = Color3.fromRGB(43,43,43),
+             ToggleToggled = Color3.fromRGB(235, 55, 23),
+             ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
+             Slider = Color3.fromRGB(27,27,27),
+             SliderBar = Color3.fromRGB(25, 25, 25),
+             SliderInc = Color3.fromRGB(235, 55, 23),
+             Dropdown = Color3.fromRGB(27,27,27),
+             DropdownItem = Color3.fromRGB(27,27,27),
+             Textbox = Color3.fromRGB(27,27,27),
+             TextboxFrame = Color3.fromRGB(22, 22, 22),
+             Colorpicker = Color3.fromRGB(27,27,27),
+             Label = Color3.fromRGB(27,27,27),
+             Bind = Color3.fromRGB(27,27,27)
+        }
      },
      Settings = {
          ShowFriendsOnLaunch = true,
          ShowMusicOnLaunch = false,
-         Theme = "Default", --Change Theme When ///
+         Theme = StarterTheme, 
          CloseBind = "RightControl",
      },
      Flags = {},
@@ -182,10 +214,12 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          end
          writefile(Config.FolderToSave .. "/settings.txt", tostring(http:JSONEncode(content)))
      end    
-     --Remove 180 when ///
-     pcall(function()
+    pcall(function()
         SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
-     end)
+    end)
+    if StarterTheme ~= "Default" then
+        SolarisLib.Settings.Theme = StarterTheme
+    end
  
      local closebindbinding = false
      local fs = false
@@ -197,7 +231,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
      local ContainerPreset = game:GetObjects("rbxassetid://7121886326")[1]
      local MFrame = MainUI.MainFrame
      MainUI.Parent = Solaris
-     MFrame.TopBar.TopFrameTitle.Text = Config.Name
+     MFrame.TopBar.TopFrameTitle.Text = Emoji..Config.Name
  
      MFrame.TopBar.TopFrameTitle.Position = UDim2.new(0,35,0,0)
      MakeDraggable(MFrame.TopBar, MainUI) 
@@ -326,6 +360,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          spawn(function()
              while wait() do
                  pcall(function()
+                 MFrame.TopBar.TopFrameTitle.Text = Emoji..Config.Name
                  MusicFrame.Frame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                  MusicFrame.Frame.TopBar.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
                  MusicFrame.Frame.TopBar.CloseBtn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -414,7 +449,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  Toggle.Parent = Container
                  Toggle.Title.Text = title
                  Toggle.Desc.Text = desc
- 
+                 Toggle.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                  local function Tween(val)
                      TweenService:Create(Toggle.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= val and 0 or 1}):Play()
                      TweenService:Create(Toggle.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= val and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
@@ -436,6 +471,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  spawn(function()
                      while wait() do
                          pcall(function()
+                         Toggle.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
                          Toggle.ToggleFrame.ToggleToggled.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                          Toggle.ToggleFrame.BackgroundColor3 = value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
                          Toggle.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -443,6 +479,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                      end
                  end)
              end
+             
              function TabHold:BindSetting(title, desc, def, path)
                  local value = SolarisLib.Settings[path] or def
                  local Bind = BindPreset:Clone()
@@ -549,7 +586,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                          end)
                      end   
                  end    
- 
+                 
                  spawn(function()
                      while wait() do
                          pcall(function()
@@ -568,7 +605,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          general:BindSetting("Close Bind", "Hides/Shows the main window when pressed", Enum.KeyCode.RightAlt, "CloseBind")
          
          local appearance = Settings:Tab("Appearance")
-         appearance:Dropdown("Theme", "The look of the UI", {"Default", "Halloween"}, "Default", "Theme") --Change Theme When ///
+         appearance:Dropdown("Theme", "The look of the UI", {"Default", "Halloween","Christmas"}, StarterTheme, "Theme")
  
      end 
      MusicConstructor()
@@ -643,7 +680,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          if (Input.KeyCode.Name == SolarisLib.Settings.CloseBind or Input.UserInputType.Name == SolarisLib.Settings.CloseBind) and not closebindbinding then
              uitoggled = not uitoggled
              MainUI.Visible = uitoggled
-     NotificationHolder.Enabled = not NotificationHolder.Enabled
+             NotificationHolder.Enabled = not uitoggled
          end
      end)
  
@@ -800,31 +837,33 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  ToggleMain.Parent = Section
                  ToggleMain.ToggleText.Text = text
                  ToggleMain.Name = text .. "element"
- 
-                function Toggle:Set(value)
+                 ToggleMain.ToggleFrame.ToggleToggled.ToggleIco.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggledIcon
+                 ToggleMain.ToggleFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
+                 ToggleMain.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
+                 function Toggle:Set(value)
                      Toggle.Value = value
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1,Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle}):Play()
                      return callback(Toggle.Value)
                  end
                  function Toggle:GhostSet(value)
                      Toggle.Value = value
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
-                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency= Toggle.Value and 0 or 1}):Play()
+                     TweenService:Create(ToggleMain.ToggleFrame.ToggleToggled.ToggleIco,TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size= Toggle.Value and UDim2.new(1,-2,1,-2) or UDim2.new(1,-6,1,-6)}):Play()
                  end
                  
                  ToggleMain.MouseButton1Click:Connect(function()
                      Toggle.Value = not Toggle.Value
                      Toggle:Set(Toggle.Value)           
                  end)
- 
                  spawn(function()
                      while wait() do
              pcall(function()
-                 ToggleMain.ToggleFrame.ToggleToggled.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
-                 ToggleMain.ToggleFrame.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
-                 ToggleMain.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
-                 ToggleMain.ToggleText.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
+                ToggleMain.ToggleFrame.ToggleToggled.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
+                ToggleMain.ToggleFrame.BackgroundColor3 = Toggle.Value and SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleToggled or SolarisLib.Themes[SolarisLib.Settings.Theme].ToggleFrame
+                ToggleMain.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Toggle
+                ToggleMain.ToggleText.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
              end)
                      end
                  end)
@@ -1144,23 +1183,23 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                  LabelFrame.Name = text .. "element"
  
                  function Label:Set(tochange)
-         pcall(function()
+                    pcall(function()
                      LabelFrame.Title.Text = tochange
                      LabelFrame.Name = text .. "element"
-         end)
+                    end)
                  end  
          
-         function Label:RemoveLabel()
+                function Label:RemoveLabel()
                      LabelFrame:Destroy()
                  end  
  
                  
                  spawn(function()
                      while wait() do
-             pcall(function()
+                    pcall(function()
                     LabelFrame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].Label
                     LabelFrame.Title.TextColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
-             end)
+                    end)
                      end
                  end)
  
@@ -1174,7 +1213,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          
                  TextboxFrame.Box.Changed:Connect(function()
              pcall(function()
-                             TextboxFrame.Box.Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)
+                TweenService:Create(TextboxFrame.Box,TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0,TextboxFrame.Box.TextBounds.X + 16,0,22)}):Play() 
              end)
                  end)
                  TextboxFrame:WaitForChild("Box").PlaceholderText = "                  "
