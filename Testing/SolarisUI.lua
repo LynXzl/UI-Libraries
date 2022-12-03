@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v12")
+warn("Solaris: Loading v15")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -118,7 +118,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(27,27,27),
              SliderBar = Color3.fromRGB(25, 25, 25),
-             SliderInc = Color3.fromRGB(55, 235, 23),
+             SliderInc = Color3.fromRGB(235, 55, 23),
              Dropdown = Color3.fromRGB(27,27,27),
              DropdownItem = Color3.fromRGB(27,27,27),
              Textbox = Color3.fromRGB(27,27,27),
