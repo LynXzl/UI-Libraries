@@ -114,11 +114,11 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
              ButtonHold = Color3.fromRGB(27,27,27),
              Toggle = Color3.fromRGB(27,27,27),
              ToggleFrame = Color3.fromRGB(43,43,43),
-             ToggleToggled = Color3.fromRGB(230, 55, 23),
+             ToggleToggled = Color3.fromRGB(235, 55, 23),
              ToggleToggledIcon = Color3.fromRGB(255, 255, 255),
              Slider = Color3.fromRGB(27,27,27),
              SliderBar = Color3.fromRGB(25, 25, 25),
-             SliderInc = Color3.fromRGB(230, 55, 23),
+             SliderInc = Color3.fromRGB(55, 235, 23),
              Dropdown = Color3.fromRGB(27,27,27),
              DropdownItem = Color3.fromRGB(27,27,27),
              Textbox = Color3.fromRGB(27,27,27),
@@ -215,7 +215,9 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
     pcall(function()
         SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
     end)
-    SolarisLib.Settings.Theme = StarterTheme
+    if StarterTheme ~= "Default" then
+        SolarisLib.Settings.Theme = StarterTheme
+    end
  
      local closebindbinding = false
      local fs = false
