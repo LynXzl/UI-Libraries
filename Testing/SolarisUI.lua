@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v15")
+warn("Solaris: Loading v16")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -11,6 +11,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  local synapse = syn
  local Solaris = Instance.new("ScreenGui")
  
+ local Emoji = ""
  local StarterTheme = "Christmas"
 
  if synapse ~= nil then
@@ -27,6 +28,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  if synapse ~= nil then
     syn.protect_gui(NotificationHolder)
  end
+
  NotificationHolder.Name = "notiHolder"
  NotificationHolder.Parent = game.CoreGui
  NotificationHolder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -229,7 +231,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
      local ContainerPreset = game:GetObjects("rbxassetid://7121886326")[1]
      local MFrame = MainUI.MainFrame
      MainUI.Parent = Solaris
-     MFrame.TopBar.TopFrameTitle.Text = Config.Name
+     MFrame.TopBar.TopFrameTitle.Text = Emoji..Config.Name
  
      MFrame.TopBar.TopFrameTitle.Position = UDim2.new(0,35,0,0)
      MakeDraggable(MFrame.TopBar, MainUI) 
@@ -358,6 +360,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          spawn(function()
              while wait() do
                  pcall(function()
+                 MFrame.TopBar.TopFrameTitle.Text = Emoji..Config.Name
                  MusicFrame.Frame.BackgroundColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].MainFrame
                  MusicFrame.Frame.TopBar.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TopBar
                  MusicFrame.Frame.TopBar.CloseBtn.Ico.ImageColor3 = SolarisLib.Themes[SolarisLib.Settings.Theme].TextColor
@@ -476,6 +479,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                      end
                  end)
              end
+             
              function TabHold:BindSetting(title, desc, def, path)
                  local value = SolarisLib.Settings[path] or def
                  local Bind = BindPreset:Clone()
@@ -582,7 +586,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                          end)
                      end   
                  end    
- 
+                 
                  spawn(function()
                      while wait() do
                          pcall(function()
@@ -676,7 +680,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          if (Input.KeyCode.Name == SolarisLib.Settings.CloseBind or Input.UserInputType.Name == SolarisLib.Settings.CloseBind) and not closebindbinding then
              uitoggled = not uitoggled
              MainUI.Visible = uitoggled
-             NotificationHolder.Enabled = not NotificationHolder.Enabled
+             NotificationHolder.Enabled = not uitoggled
          end
      end)
  
