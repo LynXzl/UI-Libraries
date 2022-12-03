@@ -2,7 +2,7 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
-warn("Solaris: Loading v11")
+warn("Solaris: Loading v12")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -212,11 +212,10 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
          end
          writefile(Config.FolderToSave .. "/settings.txt", tostring(http:JSONEncode(content)))
      end    
-     if StarterTheme == "Default" then
-        pcall(function()
-            SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
-        end)
-    end
+    pcall(function()
+        SolarisLib.Settings = http:JSONDecode(readfile(Config.FolderToSave .. "/settings.txt"))
+    end)
+    SolarisLib.Settings.Theme = StarterTheme
  
      local closebindbinding = false
      local fs = false
@@ -1184,7 +1183,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                     end)
                  end  
          
-         function Label:RemoveLabel()
+                function Label:RemoveLabel()
                      LabelFrame:Destroy()
                  end  
  
