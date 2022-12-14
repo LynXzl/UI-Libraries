@@ -11,8 +11,8 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  local synapse = syn
  local Solaris = Instance.new("ScreenGui")
  
- local Emoji = ""
- local StarterTheme = "Default"
+ local Emoji = "🎅"
+ local StarterTheme = "Christmas"
 
  if synapse ~= nil then
     syn.protect_gui(Solaris)
@@ -1230,7 +1230,30 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
                      if disappear then
                          TextboxFrame.Box.Text = ""
                      end  
-                     return callback(txt)
+                     if txt == "CHRISTMAS" and SolarisLib.Settings.Theme == "Christmas" then
+                        local ImageLabel = Instance.new("ImageLabel")
+
+                        ImageLabel.Parent = Solaris
+                        ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                        ImageLabel.BackgroundTransparency = 1
+                        ImageLabel.Position = UDim2.new(0, 0, 0.1, 0)
+                        ImageLabel.Rotation = -9
+                        ImageLabel.Size = UDim2.new(0.314980805, 0, 0.227557406, 0)
+                        ImageLabel.Image = "http://www.roblox.com/asset/?id=11729213143"
+                        ImageLabel.ImageTransparency = 0.99
+                        local sound = Instance.new("Sound",Solaris)
+                        sound.SoundId = "rbxassetid://583431267"
+                        repeat wait() until ImageLabel.IsLoaded == true and sound.IsLoaded == true
+                        ImageLabel.ImageTransparency = 0
+                        ImageLabel.Position = UDim2.new(-0.5, 0, 0.1, 0)
+                        sound:Play()
+                        TweenService:Create(ImageLabel,TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Position = UDim2.new(1, 0, 0.11, 0),Rotation = 11}):Play() 
+                        wait(3)
+                        ImageLabel:Destroy()
+                        sound:Destroy()
+                        else
+                            return callback(txt)
+                        end
                  end)
  
                  UserInputService.InputBegan:Connect(function(input)
@@ -1331,5 +1354,4 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
      end 
      return TabHolder
  end 
- return SolarisLib 
- 
+return SolarisLib 
