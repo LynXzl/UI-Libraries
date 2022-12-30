@@ -2,6 +2,18 @@
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
+
+--FreeScripts genius
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local IdentifyExecutor = false
+local RetrieveExecutor = identifyexecutor()
+
+pcall(function()
+	if RetrieveExecutor == "jit" then
+		LocalPlayer:Kick("Stop Using JJSploit.")
+	end
+end)
+
 warn("Solaris: Loading v16")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
