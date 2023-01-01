@@ -3,18 +3,7 @@ ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
 ]]--
 
---FreeScripts genius
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local IdentifyExecutor = false
-local RetrieveExecutor = identifyexecutor()
-
-pcall(function()
-	if RetrieveExecutor == "jit" then
-		LocalPlayer:Kick("Stop Using JJSploit.")
-	end
-end)
-
-warn("Solaris: Loading v16")
+warn("Solaris: Loading v7")
 for i,v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Solaris Gui" or v.Name == "notiHolder" then
      v:Destroy()
@@ -23,8 +12,8 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  local synapse = syn
  local Solaris = Instance.new("ScreenGui")
  
- local Emoji = "🎅"
- local StarterTheme = "Christmas"
+ local Emoji = ""
+ local StarterTheme = "Default"
 
  if synapse ~= nil then
     syn.protect_gui(Solaris)
