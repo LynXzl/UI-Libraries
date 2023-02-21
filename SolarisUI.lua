@@ -1,4 +1,3 @@
-v
 --[[
 ORIGINAL:
 https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol
