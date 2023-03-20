@@ -13,7 +13,7 @@ for i,v in pairs(game.CoreGui:GetChildren()) do
  local Solaris = Instance.new("ScreenGui")
  
  local Emoji = ""
- local StarterTheme = "Christmas"
+ local StarterTheme = "Default"
 
  if synapse ~= nil then
     syn.protect_gui(Solaris)
